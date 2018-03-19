@@ -1,0 +1,158 @@
+body{
+	background-image:url("backgroundImg.jpg");
+	/*background-repeat: no-repeat;*/
+	background-size: cover;
+}
+p{
+	font-size:17px;
+  }
+#topPage{
+	/**/
+	border:2px solid #eee;
+	color: white;	
+	padding:0 200px;
+}
+#bottomPage{
+	padding:50px 50px 0px 50px;
+	background-color:#FFFFF0;
+	color:brown;
+	background-image:url("backgroundImg2.jpg");
+}
+#errorMessage{
+	color:red;
+	margin-top:10px;
+}
+#username{
+	padding-top:20px;
+}
+#username:hover{
+	text-decoration:underline;
+}
+/*NavBar*/
+#logo{
+	margin:0px;
+	position:relative;
+	bottom:15px;
+}
+.navbar2{
+	background-color: #702900;
+	text-transform: uppercase;
+	border-top-left-radius:0;
+	border-top-right-radius:0;
+	padding:0 35px;
+	/**/border:none;
+}
+.navbar1{
+	/*padding-top:60px;
+	padding-left:40px;*/
+	padding-bottom:10px;
+	margin:0px;
+	background-color: transparent;
+	border:none;
+	border-radius:0;
+}
+.navbar-header{
+	position:relative;
+	height:100px;
+}
+#list1,#list2{
+	padding-top:35px;
+}
+#list1 li a,#list2 li a,#loginBtn{
+	color: #702900;
+	font-weight:800;
+	font-size:25px;
+}
+#list1 li a:hover,#loginBtn:hover{
+	background-color:#F0CDD5;
+}
+#list1 li a:active,#list2 li a:active,#loginBtn:active{
+	background-color:#E0B6C8;
+}
+#list2{
+	display:inline;
+}
+#loginBtn{
+	padding:8px 26px;
+	position: relative;
+	background-color: #FFE4E1;
+	padding-top:12px;
+	text-shadow: -1px 0 white;
+	border:1px solid;
+	border-radius:10px;
+}
+nav ul li{
+	font-family:Book Antiqua;
+	font-size: 18px;
+}
+nav ul li a{
+	display:block;
+}
+.navbar2 .navbar-nav>li>a{
+	color:white;
+	/*from*/
+}
+.navbar2 .navbar-nav>li>a:hover{
+	background-color:#FFE4E1;
+	color:#702900;
+}
+/*dropdown*/
+.dropdown{
+	position:relative;
+	display:inline-block;
+}
+.dropdown-menu{
+	display:none;
+	position: absolute;
+	/*min-width:192px;*/
+	text-align:center;
+	background-color: #FFE4E1;
+	border:1px solid #FFE4E1;
+}
+.dList{
+	color: #702900;
+	font-size:14;
+	text-transform:capitalize;
+}
+.dList:hover{
+	background-color:#702900;
+	color:white;
+	text-decoration:none;
+}
+/*.dropdown-menu{
+	background-color:black;
+	margin-right:100px;
+}*/
+/*Content*/
+.content{
+	/*margin:0 40px;*/
+}
+footer{
+	background-color:white;
+	opacity:0.5;
+	color:black;
+	text-align:center;
+}
+/*Moral style*/
+.modal-header{
+	background-color: #FFCCCC;
+	color: #CC3300;
+	border-bottom:1px solid #993333;
+}
+#205Modal{
+}
+.modal-body{
+	background-color: #f6f6f6;
+}
+#myMoralFooter{
+	padding:15px;
+	background-color: #FFCCCC;
+	color: #CC3300;
+	border-top:1px solid #993333;
+}
+#myMoralFooter a{
+	color: #CC3300;
+}
+#myMoralFooter a:active{
+	color: black;
+}

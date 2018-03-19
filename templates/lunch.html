@@ -1,0 +1,144 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Lunch | 205cafe</title>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='cafe.css')}}">
+	<style>
+		.lunchThumbnail{
+			padding:10px;
+			color: brown;
+		}
+		.lunchThumbnail img{
+			padding:5px;
+		}
+		.lunchThumbnail p{
+			margin-top:10px;
+			text-align:center;
+			font-size:24px;
+			text-transform: capitalize;
+		}
+	</style>
+  </head>
+<body onresize="mobileMode()">
+<div id="topPage">
+<nav class="navbar navbar-default navbar1">
+  <div class="container-fluid" style="padding-left:40px;">
+	<div class="navbar-header">
+      <a class="navbar-brand" href="home">
+	  <img src="{{url_for('static',filename='logo.gif')}}" id="logo" alt="Home page" height="110" width="110"></a>
+    </div>
+    <!-- <ul id="list1" class="nav navbar-nav">
+	</ul>-->
+	<ul id="list2" class="nav navbar-nav navbar-right">
+		<!-- Trigger the modal with a button -->
+		<!--data-toggle="modal" opens the modal window-->
+		<!--data-target="#myModal" points to the id of the modal-->
+		<!--<li><a href="#">Register</a></li>-->
+		<li><a href="http://localhost:5000/userinfo" id="username" style="display:none;">{{username}}</a></li>
+		<li><button type="button" id="loginBtn" 
+		data-toggle="modal" data-target="#205Modal">Login</li>
+	</ul>
+	</div>
+</nav>
+<nav class="navbar navbar-default navbar2">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav ">
+		<li><a href="home">Home</a></li>
+		<li><a href="coffee">coffee</a></li>
+		<li class="dropdown"><a class="removeDowndrop"onmouseover="openDList()" onmouseout="closeDList()" href="menu">menu</a>
+			<ul class="dropdown-menu" onmouseover="openDList()" onmouseout="closeDList()">
+				<a class="dList" href="breakfast">Breakfast</a>
+				<a class="dList" href="lunch" >Lunch</a>
+				<a class="dList" href="dessert" ">Dessert</a>
+			</ul></li>	
+		<li><a href="event">Event</a></li>
+		<li><a href="contact">contact us</a></li>
+		<!--<li><a href="#">about us</a></li>
+		<li><a href="#">member</a></li>-->
+	</ul>
+	</div>
+</nav>
+</div>
+<!--Context-->
+<div id="bottomPage">
+<div class="content container-fluid">
+<h1>Lunch</h1>
+<div class="row">
+
+<div class="col-sm-4 lunchThumbnail">
+<!--321x273-->
+<img src="{{url_for('static',filename='image/lunch/Bacon Kale Macaroni in Béchamel Sauce.jpg')}}" alt="Bacon Kale Macaroni in Béchamel Sauce image" width="100%" height="100%"></img>
+<p>Bacon Kale Macaroni in Béchamel Sauce</p>
+</div>
+
+<div class="col-sm-4 lunchThumbnail">
+<img src="{{url_for('static',filename='image/lunch/Chipotle Chicken & Guacamole Toastie.jpg')}}" alt="Chipotle Chicken & Guacamole Toastie image" width="100%" height="100%">
+<p>Chipotle Chicken & Guacamole Toastie</p>
+</div>
+
+<div class="col-sm-4 lunchThumbnail">
+<img src="{{url_for('static',filename='image/lunch/Lasagna Beef Bolognese.jpg')}}" alt="Lasagna Beef Bolognese image" width="100%" height="100%">
+<p>Lasagna Beef Bolognese</p>
+</div>
+</div>
+
+<!--Second row-->
+<div class="row">
+<div class="col-sm-4 lunchThumbnail">
+<img src="{{url_for('static',filename='image/lunch/Lasagna Roasted Vegetable.jpg')}}" alt="Lasagna Roasted Vegetable image" width="100%" height="100%"></img>
+<br/>
+<p>Lasagna Roasted Vegetable</p>
+</div>
+
+<div class="col-sm-4 lunchThumbnail">
+<img src="{{url_for('static',filename='image/lunch/Smoked Salmon with Potato Salad.jpg')}}" alt="Smoked Salmon with Potato Salad image" width="100%" height="100%">
+<p>Smoked Salmon with Potato Salad</p>
+</div>
+
+<div class="col-sm-4 lunchThumbnail">
+<img src="{{url_for('static',filename='image/lunch/Soba Noodle with Teriyaki Chicken Salad.jpg')}}" alt="Soba Noodle with Teriyaki Chicken Salad image" width="100%" height="100%">
+<p>Soba Noodle with Teriyaki Chicken Salad</p>
+</div>
+</div>
+
+</div>
+<footer>Copyright©205Cafe. All rights reserved</footer>
+</div>
+<div class="container">
+  <!-- Modal -->
+  <div class="modal fade" id="205Modal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <form action="http://localhost:5000/login" method="post">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button><!--exit-->
+          <h4 class="modal-title">Please input your username and password</h4>
+        </div>
+        <div class="modal-body">
+          	  Username </br>
+		  <input type="text" name="name" required> </br></br>
+		  Password </br>
+		  <input type="password" name="password" required>
+		  <p id="errorMessage">{{message}}</p>
+        </div>
+	  <div id="myMoralFooter">
+		<button type="submit" class="btn btn-default">Login</button>
+		</form>
+		<a href="signup" style="padding-left:10px;">New?</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<script>
+</script>
+<script src="{{ url_for('static', filename='cafe.js')}}">></script>
+</body>
+</html>

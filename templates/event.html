@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Event | 205cafe</title>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='cafe.css')}}">
+  <style>
+	#bottomPage li{
+		margin-left:50px;
+	}
+</style>
+</head>
+<body onresize="mobileMode()">
+<div id="topPage">
+<nav class="navbar navbar-default navbar1">
+  <div class="container-fluid" style="padding-left:40px;">
+	<div class="navbar-header">
+      <a class="navbar-brand" href="home">
+	  <img src="{{url_for('static',filename='logo.gif')}}" id="logo" alt="Home page" height="110" width="110"></a>
+    </div>
+    <!-- <ul id="list1" class="nav navbar-nav">
+	</ul>-->
+	<ul id="list2" class="nav navbar-nav navbar-right">
+		<!-- Trigger the modal with a button -->
+		<!--data-toggle="modal" opens the modal window-->
+		<!--data-target="#myModal" points to the id of the modal-->
+		<!--<li><a href="#">Register</a></li>-->
+		<li><a href="http://localhost:5000/userinfo" id="username" style="display:none;">{{username}}</a></li>
+		<li><button type="button" id="loginBtn" 
+		data-toggle="modal" data-target="#205Modal">Login</li>
+	</ul>
+	</div>
+</nav>
+<nav class="navbar navbar-default navbar2">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav ">
+		<li><a href="home">Home</a></li>
+		<li><a href="coffee">coffee</a></li>
+		<li class="dropdown"><a class="removeDowndrop"onmouseover="openDList()" onmouseout="closeDList()" href="menu">menu</a>
+			<ul class="dropdown-menu" onmouseover="openDList()" onmouseout="closeDList()">
+				<a class="dList" href="breakfast">Breakfast</a>
+				<a class="dList" href="lunch" >Lunch</a>
+				<a class="dList" href="dessert" ">Dessert</a>
+			</ul></li>	
+		<li><a href="event">Event</a></li>
+		<li><a href="contact">contact us</a></li>
+		<!--<li><a href="#">about us</a></li>
+		<li><a href="#">member</a></li>-->
+	</ul>
+	</div>
+</nav>
+</div>
+<!--Context-->
+<div id="bottomPage">
+<h1>Event</h1>
+<img src="{{url_for('static',filename='image/event/banner.jpg')}}" alt="" width="50%" height="50%"></img>
+<h2>Easter is coming! Easter is coming!</h2>
+<p style="font-size:22px;">From now till 25 May, 2018, purchase 205cafe coffee to enjoy buy one get 1 free offer on your next purchase. </p>
+<p> Terms and Conditions </p>
+<li>Original receipt with a valid stamp must be presented to enjoy the buy 1 get 1 free offer on coffee or drinks. The receipt and stamp is invalid if any part is found defaced or damaged.</li>
+<li>For each cup of 205cafe coffee purchased, consumer is entitled to purchase 1 cup/cone of coffee with buy 1 get 1 free offer on next purchase. Each receipt can be used once only.</li>
+<li>The buy 1 get 1 free offer on next purchase is valid till 25 May 2018.</li>
+<li>The buy 1 get 1 free offer on next purchase is not applicable to purchase of 205cafe meals. </li>
+<li>Offers cannot be used in conjunction with other promotional offers.</li>
+<li>Photocopies of receipt will not be accepted.</li>
+<li>Available while stock lasts.</li>
+<li>In case of disputes, the decision of 205cafe shall be final and binding.</li>
+<footer>Copyright©205Cafe. All rights reserved</footer>
+</div>
+
+<div class="container">
+  <!-- Modal -->
+  <div class="modal fade" id="205Modal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <form action="http://localhost:5000/login" method="post">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button><!--exit-->
+          <h4 class="modal-title">Please input your username and password</h4>
+        </div>
+        <div class="modal-body">
+		Username </br>
+		<input type="text" name="name" required> </br></br>
+		Password </br>
+		<input type="password" name="password" required>
+		<p id="errorMessage">{{message}}</p>
+        </div>
+	  <div id="myMoralFooter">
+		<button type="submit" class="btn btn-default">Login</button>
+		</form>
+		<a href="signup" style="padding-left:10px;">New?</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<script>
+</script>
+<script src="{{ url_for('static', filename='cafe.js')}}">></script>
+</body>
+</html>

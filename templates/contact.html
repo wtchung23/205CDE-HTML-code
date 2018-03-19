@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Contact | 205cafe</title>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='cafe.css')}}">
+  <style>
+  p{
+	font-size:17px;
+  }
+  span{
+	color:red;
+  }
+  #bottomPage input,textarea{
+	width:50%;
+	margin-bottom:10px;
+	border-radius:4px;
+	border:1px solid grey;
+	color:black;
+  }
+  textarea{
+	height:200px;
+  }
+  button{
+	background-color:brown;
+	border:1px solid grey;
+	border-radius:4px;
+	color:white;
+	padding:10px 20px;
+	font-size:18px;
+	margin-bottom:10px;
+  }
+  button:hover{
+	background-color:Maroon  ;
+  }
+  </style>
+  </head>
+<body onresize="mobileMode()">
+<div id="topPage">
+<nav class="navbar navbar-default navbar1">
+  <div class="container-fluid" style="padding-left:40px;">
+	<div class="navbar-header">
+      <a class="navbar-brand" href="home">
+	  <img src="{{url_for('static',filename='logo.gif')}}" id="logo" alt="Home page" height="110" width="110"></a>
+    </div>
+    <!-- <ul id="list1" class="nav navbar-nav">
+	</ul>-->
+	<ul id="list2" class="nav navbar-nav navbar-right">
+		<!-- Trigger the modal with a button -->
+		<!--data-toggle="modal" opens the modal window-->
+		<!--data-target="#myModal" points to the id of the modal-->
+		<!--<li><a href="#">Register</a></li>-->
+		<li><a href="http://localhost:5000/userinfo" id="username" style="display:none;">{{username}}</a></li>
+		<li><button type="button" id="loginBtn" 
+		data-toggle="modal" data-target="#205Modal">Login</li>
+	</ul>
+	</div>
+</nav>
+<nav class="navbar navbar-default navbar2">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav ">
+		<li><a href="home">Home</a></li>
+		<li><a href="coffee">coffee</a></li>
+		<li class="dropdown"><a class="removeDowndrop"onmouseover="openDList()" onmouseout="closeDList()" href="menu">menu</a>
+			<ul class="dropdown-menu" onmouseover="openDList()" onmouseout="closeDList()">
+				<a class="dList" href="breakfast">Breakfast</a>
+				<a class="dList" href="lunch" >Lunch</a>
+				<a class="dList" href="dessert" ">Dessert</a>
+			</ul></li>	
+		<li><a href="event">Event</a></li>
+		<li><a href="contact">contact us</a></li>
+		<!--<li><a href="#">about us</a></li>
+		<li><a href="#">member</a></li>-->
+	</ul>
+	</div>
+</nav>
+</div>
+<!--Context-->
+<div id="bottomPage">
+<h1>Contact Us</h1>
+<h2>Email Question</h2>
+<p>If you would like to send us an email for questions, fill the form below and we will get back to you as soon as we can.Thank you.</p>
+<form action="/contactSend" method="POST">
+<label>Name<span>*</span></label><br/>
+<input type="text" name='questioner' required><br/>
+<label>Your email<span>*</span></label><br/>
+<input type="email" name="questionerEmail" placeholder="e.g. example@gmail.com" required><br/>
+<label>Question<span>*</span></label><br/>
+<textarea placeholder="Write Something...(max 200 words)" name="question" maxlength=200 required></textarea><br/>
+<button type="submit">Send</button>
+</form>
+<footer>Copyright©205Cafe. All rights reserved</footer>
+</div>
+
+<div class="container">
+  <!-- Modal -->
+  <div class="modal fade" id="205Modal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <form action="http://localhost:5000/login" method="post">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button><!--exit-->
+          <h4 class="modal-title">Please input your username and password</h4>
+        </div>
+        <div class="modal-body">
+		Username </br>
+		<input type="text" name="name" required> </br></br>
+		Password </br>
+		<input type="password" name="password" required>
+		<p id="errorMessage">{{message}}</p>
+        </div>
+	  <div id="myMoralFooter">
+		<button type="submit" class="btn btn-default">Login</button>
+		</form>
+		<a href="signup" style="padding-left:10px;">New?</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<script>
+</script>
+<script src="{{ url_for('static', filename='cafe.js')}}">></script>
+</body>
+</html>

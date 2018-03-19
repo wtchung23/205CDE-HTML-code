@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>UserInfo | 205cafe</title>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='cafe.css')}}">
+  <style>
+  p{
+	font-size:20px;
+	text-transform:none;
+  }
+  h1{
+	margin-bottom:20px;
+  }
+  span{
+	color:MidnightBlue;
+  }
+  button{
+	background-color:brown;
+	border:1px solid grey;
+	border-radius:4px;
+	color:white;
+	padding:10px 20px;
+	font-size:18px;
+	margin-bottom:10px;
+  }
+  button:hover{
+	background-color:Maroon  ;
+  }
+  </style>
+  </head>
+<body onresize="mobileMode()">
+<div id="topPage">
+<nav class="navbar navbar-default navbar1">
+  <div class="container-fluid" style="padding-left:40px;">
+	<div class="navbar-header">
+      <a class="navbar-brand" href="home">
+	  <img src="{{url_for('static',filename='logo.gif')}}" id="logo" alt="Home page" height="110" width="110"></a>
+    </div>
+    <!-- <ul id="list1" class="nav navbar-nav">
+	</ul>-->
+	<ul id="list2" class="nav navbar-nav navbar-right">
+		<!-- Trigger the modal with a button -->
+		<!--data-toggle="modal" opens the modal window-->
+		<!--data-target="#myModal" points to the id of the modal-->
+		<li><a href="http://localhost:5000/userinfo" id="username">{{username}}</a></li>
+		<li><button type="button" id="loginBtn" 
+		data-toggle="modal" data-target="#205Modal">Login</li>
+	</ul>
+	</div>
+</nav>
+<nav class="navbar navbar-default navbar2">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav ">
+		<li><a href="home">Home</a></li>
+		<li><a href="coffee">coffee</a></li>
+		<li class="dropdown"><a class="removeDowndrop"onmouseover="openDList()" onmouseout="closeDList()" href="menu">menu</a>
+			<ul class="dropdown-menu" onmouseover="openDList()" onmouseout="closeDList()">
+				<a class="dList" href="breakfast">Breakfast</a>
+				<a class="dList" href="lunch" >Lunch</a>
+				<a class="dList" href="dessert" ">Dessert</a>
+			</ul></li>	
+		<li><a href="event">Event</a></li>
+		<li><a href="contact">contact us</a></li>
+		<!--<li><a href="#">about us</a></li>
+		<li><a href="#">member</a></li>-->
+	</ul>
+	</div>
+</nav>
+</div>
+<!--Context-->
+<div id="bottomPage">
+<div class="content">
+<h1>Personal Information</h1>
+<p>Your username: <span>{{username}}</span></p>
+<p>Your password: <span>{{password}}</span></p>
+<p>Your email: <span>{{email}}</span></p>
+<p>Your integral: <span>{{integral}}</span></p>
+<a href="changePwdPage"><button type="button">Change password</button></a>
+<p id="demo"></p>
+</div>
+<footer>Copyright©205Cafe. All rights reserved</footer>
+</div>
+
+<div class="container">
+  <!-- Modal -->
+  <div class="modal fade" id="205Modal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <form action="http://localhost:5000/login" method="post">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Please input your username and password</h4>
+        </div>
+        <div class="modal-body">
+		Username </br>
+		<input type="text" name="name" required> </br></br>
+		Password </br>
+		<input type="password" name="password" required>
+		<p id="errorMessage">{{message}}</p>
+        </div>
+	  <div id="myMoralFooter">
+		<button type="submit" class="btn btn-default">Login</button>
+		</form>
+		<!--<a href="" style="padding-left:10px;">Forget Password?</a>-->
+		<a href="signup" style="padding-left:10px;">New?</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script src="{{ url_for('static', filename='cafe.js')}}"></script>
+</body>
+</html>
